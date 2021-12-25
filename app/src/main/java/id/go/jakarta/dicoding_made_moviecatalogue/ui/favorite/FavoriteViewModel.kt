@@ -3,11 +3,14 @@ package id.go.jakarta.dicoding_made_moviecatalogue.ui.favorite
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import id.go.jakarta.dicoding_made_moviecatalogue.core.domain.model.Movie
+import id.go.jakarta.dicoding_made_moviecatalogue.core.domain.usecase.IMovieUseCase
 
-class FavoriteViewModel : ViewModel() {
+class FavoriteViewModel constructor(
+    private val movieUseCase: IMovieUseCase
+) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getFavoriteMovie(): LiveData<List<Movie>> =
+        movieUseCase.getFavoriteMovie().asLiveData()
 }

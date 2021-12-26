@@ -7,7 +7,7 @@
         android:title="@string/title_movie" />
 
     <item
-        android:id="@+id/navigation_favorite"
+        android:id="@+id/navigation_favorite_dynamic_feature"
         android:icon="@drawable/ic_favorite"
         android:title="@string/title_favorite" />
 

@@ -7,13 +7,14 @@
 
     <fragment
         android:id="@+id/navigation_movie"
-        android:name="id.go.jakarta.dicoding_made_moviecatalogue.ui.movie.MovieFragment"
+        android:name="com.android.habibi.dicoding_made_moviecatalogue.ui.movie.MovieFragment"
         android:label="@string/title_movie"
         tools:layout="@layout/fragment_movie" />
 
     <fragment
-        android:id="@+id/navigation_favorite"
-        android:name="id.go.jakarta.dicoding_made_moviecatalogue.ui.favorite.FavoriteFragment"
+        android:id="@+id/navigation_favorite_dynamic_feature"
+        app:moduleName="favorite"
+        android:name="com.android.habibi.favorite.FavoriteFragment"
         android:label="@string/title_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/favorite_fragment"/>
 </navigation>

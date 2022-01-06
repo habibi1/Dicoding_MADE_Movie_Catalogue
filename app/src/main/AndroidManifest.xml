@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.habibi.dicoding_made_moviecatalogue">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.android.habibi.dicoding_made_moviecatalogue.MyApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DicodingMADEMovieCatalogue">
         <activity
-            android:name="com.android.habibi.dicoding_made_moviecatalogue.MainActivity"
+            android:name=".ui.detail.DetailMovieActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>

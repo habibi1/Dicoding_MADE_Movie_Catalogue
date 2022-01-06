@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.android.habibi.core.data.Resource
 import com.android.habibi.core.domain.model.Movie
 import com.android.habibi.core.ui.MovieAdapter
+import com.android.habibi.dicoding_made_moviecatalogue.R
 import com.android.habibi.dicoding_made_moviecatalogue.databinding.FragmentMovieBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -59,10 +62,12 @@ class MovieFragment : Fragment() {
 
     private fun setAdapter(list: List<Movie>){
         movieAdapter = MovieAdapter(list as ArrayList<Movie>){
+            val toDetailMovie = MovieFragmentDirections.actionNavigationMovieToDetailMovieActivity(it.id)
+            binding.root.findNavController().navigate(toDetailMovie)
         }
 
         with(binding.rvListMovie){
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
             setHasFixedSize(true)
             adapter = movieAdapter
         }

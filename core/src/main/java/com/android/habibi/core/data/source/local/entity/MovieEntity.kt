@@ -37,8 +37,5 @@ data class MovieEntity(
     var backdropPath: String,
 
     @ColumnInfo(name = "poster_path")
-    var posterPath: String,
-
-    @ColumnInfo(name = "favorite")
-    var isFavorite: Boolean = false
+    var posterPath: String
 )

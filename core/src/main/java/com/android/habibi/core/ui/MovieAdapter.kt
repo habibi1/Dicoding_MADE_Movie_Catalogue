@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.habibi.core.domain.model.Movie
 import com.android.habibi.core.databinding.ItemListMovieBinding
+import com.android.habibi.core.utils.setImage
 
 class MovieAdapter(
     private val list: ArrayList<Movie>,
@@ -49,6 +50,8 @@ class MovieAdapter(
 
         fun bind(movie: Movie){
             currentItem = movie
+
+            setImage(binding.ivPosterMovie, currentItem!!.posterPath)
 
             binding.tvTitleMovie.text = movie.title
         }

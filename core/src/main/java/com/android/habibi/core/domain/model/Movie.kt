@@ -10,5 +10,5 @@ data class Movie(
     val popularity: Double,
     val releaseDate: String,
     val backdropPath: String,
-    val posterPath: String,
+    val posterPath: String
 )

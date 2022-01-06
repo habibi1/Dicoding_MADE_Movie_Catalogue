@@ -9,12 +9,29 @@
         android:id="@+id/navigation_movie"
         android:name="com.android.habibi.dicoding_made_moviecatalogue.ui.movie.MovieFragment"
         android:label="@string/title_movie"
-        tools:layout="@layout/fragment_movie" />
+        tools:layout="@layout/fragment_movie" >
+        <action
+            android:id="@+id/action_navigation_movie_to_detailMovieActivity"
+            app:destination="@id/detailMovieActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_favorite_dynamic_feature"
         app:moduleName="favorite"
         android:name="com.android.habibi.favorite.FavoriteFragment"
         android:label="@string/title_favorite"
-        tools:layout="@layout/favorite_fragment"/>
+        tools:layout="@layout/favorite_fragment">
+        <action
+            android:id="@+id/action_navigation_favorite_dynamic_feature_to_detailMovieActivity"
+            app:destination="@id/detailMovieActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/detailMovieActivity"
+        android:name="com.android.habibi.dicoding_made_moviecatalogue.ui.detail.DetailMovieActivity"
+        android:label="activity_detail_movie"
+        tools:layout="@layout/activity_detail_movie" >
+        <argument
+            android:name="movie_id"
+            app:argType="integer" />
+    </activity>
 </navigation>

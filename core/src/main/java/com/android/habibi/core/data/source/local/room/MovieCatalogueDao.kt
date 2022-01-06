@@ -6,15 +6,15 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MovieCatalogueDao {
-    @Query("SELECT * FROM movie_entities")
-    fun getMovie(): Flow<List<MovieEntity>>
-
-    @Query("SELECT * from movie_entities WHERE favorite = 1")
+    @Query("SELECT * from movie_entities")
     fun getFavoriteMovie(): Flow<List<MovieEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMovie(movies: List<MovieEntity>)
+    @Query("SELECT * from movie_entities WHERE id = :id")
+    fun isFavoriteMovie(id: String): Flow<MovieEntity>
 
-    @Update
-    fun updateMovie(movie: MovieEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertMovie(movies: MovieEntity)
+
+    @Delete
+    suspend fun deleteMovie(movie: MovieEntity): Int
 }

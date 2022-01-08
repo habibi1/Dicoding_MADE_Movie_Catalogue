@@ -6,8 +6,12 @@ import android.view.View
 import androidx.navigation.navArgs
 import com.android.habibi.core.data.Resource
 import com.android.habibi.core.domain.model.MovieDetail
+//import com.android.habibi.core.ui.model.MovieDetail
 import com.android.habibi.core.utils.setImage
+import com.android.habibi.dicoding_made_moviecatalogue.R
 import com.android.habibi.dicoding_made_moviecatalogue.databinding.ActivityDetailMovieBinding
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailMovieActivity : AppCompatActivity() {
@@ -21,6 +25,10 @@ class DetailMovieActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityDetailMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.ivBack.setOnClickListener {
+            onBackPressed()
+        }
 
         val args: DetailMovieActivityArgs by navArgs()
         startObserver(args.movieId.toString())
@@ -53,7 +61,8 @@ class DetailMovieActivity : AppCompatActivity() {
                     is Resource.Success -> {
                         val movie = it.data!!
                         startListener(movie)
-                        onSuccess(movie)
+                        setData(movie)
+                        onSuccess()
                     }
                     is Resource.Error -> {
                         onError()
@@ -66,24 +75,74 @@ class DetailMovieActivity : AppCompatActivity() {
     private fun onLoading(){
         binding.apply {
             progressBar.visibility = View.VISIBLE
-            appBar.visibility = View.GONE
+            ivBackdrop.visibility = View.GONE
+            viewGradient.visibility = View.GONE
+            viewContent1.visibility = View.GONE
+            tvTitleGenre.visibility = View.GONE
+            cgGenre.visibility = View.GONE
+            tvTitleOverview.visibility = View.GONE
+            tvOverview.visibility = View.GONE
+            ivBack.visibility = View.GONE
+            cbFavorite.visibility = View.GONE
         }
     }
 
-    private fun onSuccess(movie: MovieDetail){
+    private fun onSuccess(){
         binding.apply {
             progressBar.visibility = View.GONE
-            appBar.visibility = View.VISIBLE
-
-            setImage(ivBackdrop, movie.backdropPath)
-            setImage(ivPoster, movie.posterPath)
+            ivBackdrop.visibility = View.VISIBLE
+            viewGradient.visibility = View.VISIBLE
+            viewContent1.visibility = View.VISIBLE
+            tvTitleGenre.visibility = View.VISIBLE
+            cgGenre.visibility = View.VISIBLE
+            tvTitleOverview.visibility = View.VISIBLE
+            tvOverview.visibility = View.VISIBLE
+            ivBack.visibility = View.VISIBLE
+            cbFavorite.visibility = View.VISIBLE
         }
     }
 
     private fun onError(){
         binding.apply {
             progressBar.visibility = View.GONE
-            appBar.visibility = View.GONE
+            ivBackdrop.visibility = View.GONE
+            viewGradient.visibility = View.GONE
+            viewContent1.visibility = View.GONE
+            tvTitleGenre.visibility = View.GONE
+            cgGenre.visibility = View.GONE
+            tvTitleOverview.visibility = View.GONE
+            tvOverview.visibility = View.GONE
+            ivBack.visibility = View.GONE
+            cbFavorite.visibility = View.GONE
+        }
+    }
+
+    private fun setData(movie: MovieDetail){
+        binding.apply {
+            setImage(ivBackdrop, movie.backdropPath)
+            setImage(ivPoster, movie.posterPath)
+            tvTitleMovie.text = movie.title
+            tvOverview.text = movie.overview
+            tvRating.text = movie.voteAverage.toString()
+            tvVoteCount.text = "(" + movie.voteCount.toString() + " " + getString(R.string.vote) + ")"
+            initChipGroup(cgGenre, movie.genres)
+
+            tvAdult.text = getString(
+                if (movie.adult){
+                    R.string.adult
+                } else
+                    R.string.all_ages
+            )
+        }
+    }
+
+    private fun initChipGroup(chipGroup: ChipGroup, list: List<String>) {
+        chipGroup.removeAllViews()
+        for (text in list) {
+            val chip =
+                layoutInflater.inflate(R.layout.item_chip, chipGroup, false) as Chip
+            chip.text = text
+            chipGroup.addView(chip)
         }
     }
 }

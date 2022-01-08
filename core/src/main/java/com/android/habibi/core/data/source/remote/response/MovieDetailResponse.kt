@@ -23,7 +23,7 @@ data class MovieDetailResponse(
 	val revenue: Int,
 
 	@field:SerializedName("genres")
-	val genres: List<GenresItem?>,
+	val genres: List<GenresItem>,
 
 	@field:SerializedName("popularity")
 	val popularity: Double,

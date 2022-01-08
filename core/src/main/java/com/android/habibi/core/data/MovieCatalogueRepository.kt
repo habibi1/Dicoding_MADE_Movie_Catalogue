@@ -7,13 +7,14 @@ import com.android.habibi.core.data.source.remote.network.ApiResponse
 import com.android.habibi.core.data.source.remote.response.MovieDetailResponse
 import com.android.habibi.core.data.source.remote.response.ResultsItem
 import com.android.habibi.core.domain.model.Movie
-import com.android.habibi.core.domain.model.MovieDetail
+import com.android.habibi.core.domain.model.MovieDetail as MovieDetailDomain
+//import com.android.habibi.core.ui.model.MovieDetail as MovieDetailPresentation
 import com.android.habibi.core.domain.repository.IMovieRepository
 import com.android.habibi.core.utils.AppExecutors
-import com.android.habibi.core.utils.DataMapper.mapListMovieResponseToDomain
-import com.android.habibi.core.utils.DataMapper.mapMovieDetailResponseToDomain
-import com.android.habibi.core.utils.DataMapper.mapMovieDomainToEntities
-import com.android.habibi.core.utils.DataMapper.mapMovieEntitiesToDomain
+import com.android.habibi.core.data.utils.DataMapper.mapListMovieResponseToDomain
+import com.android.habibi.core.data.utils.DataMapper.mapMovieDetailResponseToDomain
+import com.android.habibi.core.data.utils.DataMapper.mapMovieDomainToEntities
+import com.android.habibi.core.data.utils.DataMapper.mapMovieEntitiesToDomain
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -32,9 +33,9 @@ class MovieCatalogueRepository constructor(
 
         }.asFlow()
 
-    override fun getDetailMovie(movieId: String): Flow<Resource<MovieDetail>> =
-        object : NetworkBoundResource<MovieDetail, MovieDetailResponse>() {
-            override fun loadFromNetwork(data: MovieDetailResponse): Flow<MovieDetail> =
+    override fun getDetailMovie(movieId: String): Flow<Resource<MovieDetailDomain>> =
+        object : NetworkBoundResource<MovieDetailDomain, MovieDetailResponse>() {
+            override fun loadFromNetwork(data: MovieDetailResponse): Flow<MovieDetailDomain> =
                 mapMovieDetailResponseToDomain(data)
             override suspend fun createCall(): Flow<ApiResponse<MovieDetailResponse>> =
                 remoteDataSource.getDetailMovie(movieId)
@@ -45,12 +46,12 @@ class MovieCatalogueRepository constructor(
             mapMovieEntitiesToDomain(it)
         }
 
-    override suspend fun deleteFavoriteMovie(movie: MovieDetail): Int {
+    override suspend fun deleteFavoriteMovie(movie: MovieDetailDomain): Int {
         val movieEntity = mapMovieDomainToEntities(movie)
         return localDataSource.deleteFavoriteMovie(movieEntity)
     }
 
-    override suspend fun insertFavoriteMovie(movie: MovieDetail) {
+    override suspend fun insertFavoriteMovie(movie: MovieDetailDomain) {
         val movieEntity = mapMovieDomainToEntities(movie)
         return localDataSource.insertMovie(movieEntity)
     }

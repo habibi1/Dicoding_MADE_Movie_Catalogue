@@ -27,12 +27,6 @@ data class MovieEntity(
     @ColumnInfo(name = "vote_average")
     var voteAverage: Double,
 
-    @ColumnInfo(name = "popularity")
-    var popularity: Double,
-
-    @ColumnInfo(name = "release_date")
-    var releaseDate: String,
-
     @ColumnInfo(name = "backdrop_path")
     var backdropPath: String,
 

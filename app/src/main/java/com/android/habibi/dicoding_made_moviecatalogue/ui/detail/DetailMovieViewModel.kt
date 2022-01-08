@@ -2,7 +2,6 @@ package com.android.habibi.dicoding_made_moviecatalogue.ui.detail
 
 import androidx.lifecycle.*
 import com.android.habibi.core.data.Resource
-import com.android.habibi.core.domain.model.Movie
 import com.android.habibi.core.domain.model.MovieDetail
 import com.android.habibi.core.domain.usecase.IMovieUseCase
 import kotlinx.coroutines.launch

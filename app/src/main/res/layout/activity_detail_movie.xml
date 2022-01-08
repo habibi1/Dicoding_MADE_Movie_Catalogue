@@ -1,139 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.detail.DetailMovieActivity"
-    android:fitsSystemWindows="true">
+    android:background="@color/black"
+    tools:context=".ui.detail.DetailMovieActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_backdrop"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="500:281"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/is_loading" />
+
+        <View
+            android:id="@+id/view_gradient"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_200"
+            android:background="@drawable/bg_gradient_transparent"
+            app:layout_constraintBottom_toBottomOf="@id/iv_backdrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_normal"
+            android:fitsSystemWindows="true"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/ic_favorite"
+            android:buttonTint="@color/rb_favorite"
+            android:fitsSystemWindows="true"
+            android:layout_marginTop="@dimen/padding_normal"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_back" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view_content_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-            app:contentScrim="?attr/colorPrimary"
-            app:statusBarScrim="?attr/colorPrimaryVariant">
+            android:layout_marginTop="-75dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_backdrop">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fitsSystemWindows="true">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_poster"
+                android:layout_width="125dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/padding_normal"
+                app:cardCornerRadius="@dimen/radius_card"
+                app:layout_constraintDimensionRatio="2:3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_title_movie">
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/iv_backdrop"
+                    android:id="@+id/iv_poster"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:contentDescription="@string/backdrop_image"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_image"
-                    app:layout_constraintDimensionRatio="500:281"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="match_parent"
+                    android:background="@color/is_loading" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_title_movie"
+                style="@style/TextAppearance.MaterialComponents.Headline5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/padding_normal"
+                android:text="@string/title_movie"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cv_poster" />
 
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ProgressBar
-                android:id="@+id/progress_bar"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/size_8"
+                android:text="9.7"
+                android:textColor="@color/star"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/iv_rating"
+                app:layout_constraintStart_toEndOf="@id/iv_rating"
+                app:layout_constraintTop_toTopOf="@id/iv_rating" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_vote_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_8"
+                android:includeFontPadding="false"
+                android:text="(100 pemilih)"
+                android:textColor="#686868"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_rating"
+                app:layout_constraintStart_toEndOf="@+id/tv_rating"
+                app:layout_constraintTop_toTopOf="@+id/tv_rating" />
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cv_poster"
-                    android:layout_width="@dimen/size_150"
-                    android:layout_height="0dp"
-                    app:cardCornerRadius="@dimen/radius_card"
-                    android:elevation="@dimen/size_8"
-                    android:layout_margin="@dimen/padding_normal"
-                    app:layout_constraintDimensionRatio="2:3"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_normal"
+                android:layout_marginTop="@dimen/size_8"
+                android:src="@drawable/ic_star"
+                app:layout_constraintStart_toEndOf="@id/cv_poster"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_movie" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/iv_poster"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:contentDescription="@string/backdrop_image"
-                        android:src="@drawable/ic_image" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_normal"
+                android:layout_marginTop="@dimen/size_8"
+                android:src="@drawable/ic_time"
+                app:layout_constraintStart_toEndOf="@id/cv_poster"
+                app:layout_constraintTop_toBottomOf="@+id/iv_rating" />
 
-                </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/size_8"
+                android:text="1 jam 25 menit"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/iv_duration"
+                app:layout_constraintStart_toEndOf="@id/iv_duration"
+                app:layout_constraintTop_toTopOf="@id/iv_duration" />
 
-                <com.google.android.material.checkbox.MaterialCheckBox
-                    android:id="@+id/cb_favorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:button="@drawable/ic_favorite"
-                    android:buttonTint="@color/rb_favorite"
-                    app:layout_constraintBottom_toBottomOf="@+id/cv_poster"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/cv_poster" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_adult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_normal"
+                android:layout_marginTop="@dimen/size_8"
+                android:src="@drawable/ic_warning"
+                app:layout_constraintStart_toEndOf="@id/cv_poster"
+                app:layout_constraintTop_toBottomOf="@+id/iv_duration" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tv_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_movie"
-                    android:padding="@dimen/padding_normal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cv_poster" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_adult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/size_8"
+                android:text="Adult"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/iv_adult"
+                app:layout_constraintStart_toEndOf="@id/iv_adult"
+                app:layout_constraintTop_toTopOf="@id/iv_adult" />
 
-                <RatingBar
-                    android:id="@+id/rb_popularity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_double_arrow_up"
-                    app:layout_constraintBottom_toTopOf="@+id/materialTextView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_title_genre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Genres"
+            android:layout_marginHorizontal="@dimen/padding_normal"
+            android:layout_marginTop="@dimen/padding_normal"
+            app:layout_constraintTop_toBottomOf="@id/view_content_1"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/materialTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_normal"
-                    android:text="@string/detail_movie"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cg_genre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:selectionRequired="false"
+            android:layout_marginBottom="@dimen/padding_normal"
+            android:layout_marginHorizontal="@dimen/padding_normal"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_genre"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_title_overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Overview"
+            android:layout_marginVertical="@dimen/size_8"
+            android:layout_marginHorizontal="@dimen/padding_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cg_genre"/>
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="dsds"
+            android:layout_marginVertical="@dimen/size_8"
+            android:layout_marginHorizontal="@dimen/padding_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_overview"/>
 
-    </androidx.core.widget.NestedScrollView>
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -1,4 +1,4 @@
-package com.android.habibi.core.utils
+package com.android.habibi.core.data.utils
 
 import com.android.habibi.core.data.source.local.entity.MovieEntity
 import com.android.habibi.core.data.source.remote.response.MovieDetailResponse
@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
 object DataMapper {
-
     fun mapListMovieResponseToDomain(input: List<ResultsItem>): Flow<List<Movie>> {
         val moviesList = ArrayList<Movie>()
         input.map {
@@ -21,8 +20,6 @@ object DataMapper {
                     it.adult,
                     it.voteCount,
                     it.voteAverage,
-                    it.popularity,
-                    it.releaseDate,
                     it.backdropPath,
                     it.posterPath
                 )
@@ -31,31 +28,28 @@ object DataMapper {
         return flowOf(moviesList)
     }
 
-    fun mapMovieDetailResponseToDomain(input: MovieDetailResponse): Flow<MovieDetail> =
-        flowOf(
+    fun mapMovieDetailResponseToDomain(input: MovieDetailResponse): Flow<MovieDetail> {
+        val genres = ArrayList<String>()
+
+        input.genres.forEach {
+            genres.add(it.name)
+        }
+
+        return flowOf(
             MovieDetail(
-            input.originalLanguage,
-            input.imdbId,
-            input.video,
-            input.title,
-            input.backdropPath,
-            input.revenue,
-            input.popularity,
-            input.id,
-            input.voteCount,
-            input.budget,
-            input.overview,
-            input.originalTitle,
-            input.runtime,
-            input.posterPath,
-            input.releaseDate,
-            input.voteAverage,
-            input.tagline,
-            input.adult,
-            input.homepage,
-            input.status
+                input.title,
+                input.backdropPath,
+                input.id,
+                input.voteCount,
+                input.overview,
+                input.runtime,
+                input.posterPath,
+                input.voteAverage,
+                input.adult,
+                genres
             )
         )
+    }
 
     fun mapMovieEntitiesToDomain(input: List<MovieEntity>): List<Movie> {
         val moviesList = ArrayList<Movie>()
@@ -68,8 +62,6 @@ object DataMapper {
                     it.adult,
                     it.voteCount,
                     it.voteAverage,
-                    it.popularity,
-                    it.releaseDate,
                     it.backdropPath,
                     it.posterPath
                 )
@@ -86,8 +78,6 @@ object DataMapper {
             input.adult,
             input.voteCount,
             input.voteAverage,
-            input.popularity,
-            input.releaseDate,
             input.backdropPath,
             input.posterPath
         )

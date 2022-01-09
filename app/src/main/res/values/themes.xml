@@ -15,12 +15,4 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="fontFamily">@font/poppins_regular</item>
     </style>
-    <style name="Theme.DicodingMADEMovieCatalogue.NoActionBar" parent="Theme.DicodingMADEMovieCatalogue">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-    <style name="Theme.DicodingMADEMovieCatalogue.AppBarOverlay"
-        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="Theme.DicodingMADEMovieCatalogue.PopupOverlay"
-        parent="ThemeOverlay.AppCompat.Light" />
 </resources>

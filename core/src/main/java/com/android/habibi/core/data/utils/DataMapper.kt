@@ -19,7 +19,7 @@ object DataMapper {
                     it.overview,
                     it.adult,
                     it.voteCount,
-                    it.voteAverage,
+                    it.voteAverage/2,
                     it.backdropPath,
                     it.posterPath
                 )

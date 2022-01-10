@@ -1,15 +1,15 @@
 package com.android.habibi.core.ui.model
 
-data class MovieDetailPresentation(
+data class MovieDetail(
     val title: String,
     val backdropPath: String,
     val id: Int,
-    val voteCount: String,
+    val voteCount: Int,
     val overview: String,
-    val runtimeHour: Int,
-    val runtimeMinute: Int,
+    val hourRuntime: Int,
+    val minuteRuntime: Int,
     val posterPath: String,
-    val voteAverage: String,
+    val voteAverage: Float,
     val adult: Boolean,
     val genres: List<String>
 )

@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "id.go.jakarta.dicoding_made_moviecatalogue"
-        minSdk 21
+        minSdk 23
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -47,7 +47,4 @@ dependencies {
     api("androidx.navigation:navigation-fragment-ktx:$navigation_version")
     api("androidx.navigation:navigation-ui-ktx:$navigation_version")
     api("androidx.navigation:navigation-dynamic-features-fragment:$navigation_version")
-    implementation 'androidx.appcompat:appcompat:1.4.0'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
 }

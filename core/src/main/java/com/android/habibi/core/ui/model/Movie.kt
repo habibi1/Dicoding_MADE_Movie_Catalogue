@@ -1,8 +1,8 @@
-package com.android.habibi.core.domain.model
+package com.android.habibi.core.ui.model
 
 data class Movie(
     val id: Int,
     val title: String,
-    val voteAverage: Double,
+    val voteAverage: Float,
     val posterPath: String
 )

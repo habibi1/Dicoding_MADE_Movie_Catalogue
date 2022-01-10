@@ -8,20 +8,11 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
-        app:title="@string/title_favorite"
+        app:title="@string/favorite_movie"
         style="@style/ToolBarCentered"
         app:menu="@menu/menu_setting"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/iv_setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/padding_normal"
-        app:layout_constraintBottom_toBottomOf="@id/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -36,29 +27,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_movie_staggered" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <include
         android:id="@+id/view_data_empty"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        layout="@layout/layout_data_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:visibility="gone"
-        android:orientation="vertical"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_sentiment_neutral"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/data_empty"/>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ProgressBar
         android:id="@+id/progress_bar"

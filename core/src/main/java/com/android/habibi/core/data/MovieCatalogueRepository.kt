@@ -10,7 +10,6 @@ import com.android.habibi.core.domain.model.Movie
 import com.android.habibi.core.domain.model.MovieDetail as MovieDetailDomain
 //import com.android.habibi.core.ui.model.MovieDetail as MovieDetailPresentation
 import com.android.habibi.core.domain.repository.IMovieRepository
-import com.android.habibi.core.utils.AppExecutors
 import com.android.habibi.core.data.utils.DataMapper.mapListMovieResponseToDomain
 import com.android.habibi.core.data.utils.DataMapper.mapMovieDetailResponseToDomain
 import com.android.habibi.core.data.utils.DataMapper.mapMovieDomainToEntities
@@ -20,8 +19,7 @@ import kotlinx.coroutines.flow.map
 
 class MovieCatalogueRepository constructor(
     private val remoteDataSource: RemoteDataSource,
-    private val localDataSource: LocalDataSource,
-    private val appExecutors: AppExecutors
+    private val localDataSource: LocalDataSource
 ): IMovieRepository {
 
     override fun getAllMovie(): Flow<Resource<List<Movie>>> =

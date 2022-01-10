@@ -8,7 +8,6 @@ import com.android.habibi.core.data.source.local.room.MovieCatalogueDatabase
 import com.android.habibi.core.data.source.remote.RemoteDataSource
 import com.android.habibi.core.data.source.remote.network.ApiService
 import com.android.habibi.core.domain.repository.IMovieRepository
-import com.android.habibi.core.utils.AppExecutors
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -51,6 +50,5 @@ val networkModule = module {
 val repositoryModule = module {
     single { LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
-    factory { AppExecutors() }
-    single<IMovieRepository> { MovieCatalogueRepository(get(), get(), get()) }
+    single<IMovieRepository> { MovieCatalogueRepository(get(), get()) }
 }

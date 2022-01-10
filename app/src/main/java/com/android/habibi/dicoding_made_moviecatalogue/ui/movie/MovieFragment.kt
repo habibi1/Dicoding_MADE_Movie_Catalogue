@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.android.habibi.core.data.Resource
-import com.android.habibi.core.domain.model.Movie
-import com.android.habibi.core.ui.MovieAdapter
+import com.android.habibi.core.ui.model.Movie
+import com.android.habibi.core.ui.DataResource
+import com.android.habibi.core.ui.adapter.MovieAdapter
 import com.android.habibi.dicoding_made_moviecatalogue.databinding.FragmentMovieBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -43,19 +43,28 @@ class MovieFragment : Fragment() {
         viewModel.getMovie().observe(viewLifecycleOwner, {
             if (it != null){
                 when(it){
-                    is Resource.Loading -> {
+                    is DataResource.Loading -> {
                         onLoading()
                     }
-                    is Resource.Success -> {
+                    is DataResource.Success -> {
                         setAdapter(it.data!!)
                         onSuccess()
                     }
-                    is Resource.Error -> {
+                    is DataResource.Error -> {
                         onError()
+                    }
+                    is DataResource.Empty -> {
+                        onEmpty()
                     }
                 }
             }
         })
+    }
+
+    private fun startErrorListener(){
+        binding.viewError.btnTryAgain.setOnClickListener {
+            viewModel.refreshData()
+        }
     }
 
     private fun setAdapter(list: List<Movie>){
@@ -79,6 +88,8 @@ class MovieFragment : Fragment() {
         binding.apply {
             progressCircular.visibility = View.VISIBLE
             rvListMovie.visibility = View.GONE
+            viewError.root.visibility = View.GONE
+            viewDataEmpty.root.visibility = View.GONE
         }
     }
 
@@ -86,6 +97,8 @@ class MovieFragment : Fragment() {
         binding.apply {
             progressCircular.visibility = View.GONE
             rvListMovie.visibility = View.VISIBLE
+            viewError.root.visibility = View.GONE
+            viewDataEmpty.root.visibility = View.GONE
         }
     }
 
@@ -93,6 +106,19 @@ class MovieFragment : Fragment() {
         binding.apply {
             progressCircular.visibility = View.GONE
             rvListMovie.visibility = View.GONE
+            viewError.root.visibility = View.VISIBLE
+            viewDataEmpty.root.visibility = View.GONE
+        }
+
+        startErrorListener()
+    }
+
+    private fun onEmpty(){
+        binding.apply {
+            progressCircular.visibility = View.GONE
+            rvListMovie.visibility = View.GONE
+            viewError.root.visibility = View.GONE
+            viewDataEmpty.root.visibility = View.VISIBLE
         }
     }
 

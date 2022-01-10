@@ -2,17 +2,18 @@ package com.android.habibi.favorite
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.android.habibi.core.domain.model.Movie
-import com.android.habibi.core.ui.MovieAdapter
+import com.android.habibi.core.ui.DataResource
+import com.android.habibi.core.ui.model.Movie
+import com.android.habibi.core.ui.adapter.MovieAdapter
 import com.android.habibi.di.favoriteModule
 import com.android.habibi.di.settingPreferencesModule
 import com.android.habibi.favorite.databinding.FavoriteFragmentBinding
@@ -56,12 +57,40 @@ class FavoriteFragment : Fragment() {
         startObserverTypeList()
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //set support action bar
+        (activity as AppCompatActivity?)!!.setSupportActionBar(binding.toolbar as Toolbar)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_setting, menu)
+        return super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            R.id.action_settings -> {
+                typeList?.let { showSettingDialog(it) }
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
+    private fun supportMenuItem(isSupport: Boolean){
+        //set support options menu
+        setHasOptionsMenu(isSupport)
+    }
+
     private fun startObserverTypeList(){
         viewModel.getTypeListSetting().observe(
             viewLifecycleOwner, {
                 typeList = it
                 setAdapter()
-                startSettingListener(it)
             }
         )
     }
@@ -71,21 +100,19 @@ class FavoriteFragment : Fragment() {
         _binding = null
     }
 
-    private fun startSettingListener(typeList: Int){
-        binding.ivSetting.setOnClickListener {
-            showSettingDialog(typeList)
-        }
-    }
-
     private fun startObserver(){
+        supportMenuItem(false)
         onLoading()
         viewModel.listFavoriteMovie.observe(viewLifecycleOwner, {
-            if (!it.isNullOrEmpty()) {
-                listMovie = it
+            if (it is DataResource.Success) {
+                listMovie = it.data
                 setAdapter()
                 onSuccess()
-            } else
+                supportMenuItem(true)
+            } else {
                 onEmpty()
+                supportMenuItem(false)
+            }
         })
     }
 
@@ -126,37 +153,34 @@ class FavoriteFragment : Fragment() {
     private fun onLoading(){
         binding.apply {
             progressBar.visibility = View.VISIBLE
-            viewDataEmpty.visibility = View.GONE
+            viewDataEmpty.root.visibility = View.GONE
             rvListMovie.visibility = View.GONE
-            ivSetting.visibility = View.GONE
         }
     }
 
     private fun onSuccess(){
         binding.apply {
             progressBar.visibility = View.GONE
-            viewDataEmpty.visibility = View.GONE
+            viewDataEmpty.root.visibility = View.GONE
             rvListMovie.visibility = View.VISIBLE
-            ivSetting.visibility = View.VISIBLE
         }
     }
 
     private fun onEmpty(){
         binding.apply {
             progressBar.visibility = View.GONE
-            viewDataEmpty.visibility = View.VISIBLE
+            viewDataEmpty.root.visibility = View.VISIBLE
             rvListMovie.visibility = View.GONE
-            ivSetting.visibility = View.GONE
         }
     }
 
     private fun showSettingDialog(typeList: Int){
-        val choices = arrayOf<CharSequence>("Staggered", "List Vertikal")
+        val choices = arrayOf<CharSequence>(getString(R.string.staggered_grid), getString(R.string.linear_vertical))
 
         MaterialAlertDialogBuilder(requireActivity())
-            .setTitle("Jenis List")
+            .setTitle(getString(R.string.type_list))
             .setPositiveButton(
-                "Ubah"
+                getString(R.string.set)
             ) { dialog: DialogInterface, _: Int ->
                 val checkedItemPosition =
                     (dialog as AlertDialog).listView
@@ -165,7 +189,7 @@ class FavoriteFragment : Fragment() {
                     viewModel.saveTypeListSetting(checkedItemPosition)
                 }
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(getString(R.string.cancel), null)
             .setSingleChoiceItems(choices, typeList, null)
             .show()
     }

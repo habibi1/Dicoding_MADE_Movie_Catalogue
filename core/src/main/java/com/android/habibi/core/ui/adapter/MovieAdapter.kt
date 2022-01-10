@@ -1,9 +1,9 @@
-package com.android.habibi.core.ui
+package com.android.habibi.core.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.android.habibi.core.domain.model.Movie
+import com.android.habibi.core.ui.model.Movie
 import com.android.habibi.core.databinding.ItemMovieLinearVerticalBinding
 import com.android.habibi.core.databinding.ItemMovieStaggeredBinding
 import com.android.habibi.core.databinding.ItemMovieViewPagerBinding
@@ -150,7 +150,7 @@ class MovieAdapter(
             setImage(binding.ivPoster, currentItem!!.posterPath)
 
             binding.tvTitleMovie.text = movie.title
-            binding.ratingBar.rating = movie.voteAverage.toFloat()
+            binding.ratingBar.rating = movie.voteAverage
         }
     }
 }

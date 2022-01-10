@@ -5,4 +5,6 @@
     <dimen name="size_3">3dp</dimen>
     <dimen name="size_100">100dp</dimen>
     <dimen name="size_8">8dp</dimen>
+    <dimen name="text_item_title_size">16sp</dimen>
+    <dimen name="shimmer_duration">800</dimen>
 </resources>

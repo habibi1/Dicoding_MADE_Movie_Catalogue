@@ -1,10 +1,16 @@
 <resources>
-    <string name="app_name">Dicoding - MADE - Movie Catalogue</string>
+    <string name="app_name">Movie Catalogue</string>
     <string name="title_movie">Movie</string>
     <string name="title_favorite">Favorite</string>
-    <string name="adult">Dewasa</string>
-    <string name="all_ages">Semua Usia</string>
-    <string name="vote">pemilih</string>
-    <string name="detail_movie">Detail Film</string>
-    <string name="action_settings">Pengaturan</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="adult">Adult</string>
+    <string name="all_ages">All Ages</string>
+    <string name="vote">voted</string>
+    <string name="detail_movie">Detail Movie</string>
+    <string name="genres">Genres</string>
+    <string name="overview">Overview</string>
+    <string name="hour">hour</string>
+    <string name="hours">hours</string>
+    <string name="minute">minute</string>
+    <string name="minutes">minutes</string>
 </resources>

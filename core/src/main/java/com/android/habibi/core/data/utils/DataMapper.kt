@@ -16,11 +16,7 @@ object DataMapper {
                 Movie(
                     it.id,
                     it.title,
-                    it.overview,
-                    it.adult,
-                    it.voteCount,
-                    it.voteAverage/2,
-                    it.backdropPath,
+                    it.voteAverage,
                     it.posterPath
                 )
             moviesList.add(movie)
@@ -58,11 +54,7 @@ object DataMapper {
                 Movie(
                     it.id,
                     it.title,
-                    it.overview,
-                    it.adult,
-                    it.voteCount,
                     it.voteAverage,
-                    it.backdropPath,
                     it.posterPath
                 )
             moviesList.add(movie)

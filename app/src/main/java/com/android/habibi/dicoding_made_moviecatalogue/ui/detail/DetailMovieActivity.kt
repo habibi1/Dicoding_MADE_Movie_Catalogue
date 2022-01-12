@@ -17,14 +17,13 @@ class DetailMovieActivity : AppCompatActivity() {
 
     private val viewModel: DetailMovieViewModel by viewModel()
 
-    private var _binding: ActivityDetailMovieBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityDetailMovieBinding
 
     private var isFavorite: Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityDetailMovieBinding.inflate(layoutInflater)
+        binding = ActivityDetailMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
@@ -33,11 +32,6 @@ class DetailMovieActivity : AppCompatActivity() {
         val args: DetailMovieActivityArgs by navArgs()
         startObserverData(args.movieId.toString())
         startObserverFavorite(args.movieId.toString())
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 
     private fun startListener(movie: MovieDetail){

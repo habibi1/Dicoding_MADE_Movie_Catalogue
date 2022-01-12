@@ -31,7 +31,7 @@ class MovieViewModel constructor(
                     DataResource.Loading()
                 }
                 is Resource.Error -> {
-                    DataResource.Error(it.message!!)
+                    DataResource.Error(it.message.toString())
                 }
             }
         }

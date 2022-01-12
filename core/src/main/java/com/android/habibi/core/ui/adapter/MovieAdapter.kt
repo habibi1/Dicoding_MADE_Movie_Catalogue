@@ -15,12 +15,6 @@ class MovieAdapter(
     private val onClick: (Movie) -> Unit
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    companion object {
-        const val VIEW_TYPE_STAGGERED = 0
-        const val VIEW_TYPE_LINEAR_VERTICAL = 1
-        const val VIEW_TYPE_VIEW_PAGER = 2
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         when (viewType){
             VIEW_TYPE_STAGGERED -> {
@@ -152,5 +146,11 @@ class MovieAdapter(
             binding.tvTitleMovie.text = movie.title
             binding.ratingBar.rating = movie.voteAverage
         }
+    }
+
+    companion object {
+        const val VIEW_TYPE_STAGGERED = 0
+        const val VIEW_TYPE_LINEAR_VERTICAL = 1
+        const val VIEW_TYPE_VIEW_PAGER = 2
     }
 }

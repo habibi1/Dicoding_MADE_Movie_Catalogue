@@ -8,6 +8,8 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
         app:title="@string/now_playing"
         style="@style/ToolBarCentered"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,8 +18,8 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/rv_list_movie"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         tools:listitem="@layout/item_movie_staggered"
         app:layout_constrainedHeight="true"
         app:layout_constraintTop_toBottomOf="@id/toolbar"

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="radius_card">10dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="size_3">3dp</dimen>
+    <dimen name="size_100">100dp</dimen>
+    <dimen name="size_8">8dp</dimen>
+    <dimen name="text_item_title_size">16sp</dimen>
+    <dimen name="shimmer_duration">800</dimen>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="something_wrong">Something Wrong</string>
+    <string name="try_again">Try Again</string>
+    <string name="data_empty">Data Empty</string>
+</resources>

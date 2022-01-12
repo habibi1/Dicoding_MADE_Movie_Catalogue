@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ToolBarCentered" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleCentered">true</item>
+    </style>
+
+    <style name="ImagePoster">
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintDimensionRatio">2:3</item>
+        <item name="android:background">@color/is_loading</item>
+    </style>
+
+    <style name="CardView.ImagePoster" parent="ImagePoster">
+        <item name="cardCornerRadius">@dimen/radius_card</item>
+    </style>
+
+    <style name="CardView.Item" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/radius_card</item>
+        <item name="android:layout_margin">@dimen/size_8</item>
+        <item name="elevation">@dimen/size_3</item>
+    </style>
+
+    <style name="TextView.ItemTitle" parent="Widget.MaterialComponents.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_item_title_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">@dimen/padding_normal</item>
+    </style>
+
+    <style name="TextView.DetailWithDrawable" parent="Widget.MaterialComponents.TextView">
+        <item name="android:paddingStart">@dimen/size_8</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+</resources>

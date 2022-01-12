@@ -3,8 +3,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
     }
 }
 rootProject.name = "Dicoding - MADE - Movie Catalogue"
 include ':app'
+include ':core'
+include ':favorite'

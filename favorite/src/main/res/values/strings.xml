@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Setting</string>
+    <string name="favorite_movie">Favorite Movie</string>
+    <string name="staggered_grid">Staggered Grid</string>
+    <string name="linear_vertical">Linear Vertical</string>
+    <string name="type_list">Type List</string>
+    <string name="set">Set</string>
+    <string name="cancel">Cancel</string>
+</resources>

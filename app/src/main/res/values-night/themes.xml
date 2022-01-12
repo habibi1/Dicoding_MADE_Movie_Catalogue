@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.DicodingMADEMovieCatalogue" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.DicodingMADEMovieCatalogue" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,5 +12,32 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="ViewDetail" parent="Theme.DicodingMADEMovieCatalogue">
+        <item name="android:background">@drawable/bg_gradient_transparent</item>
+        <item name="android:backgroundTint">@color/dark</item>
+    </style>
+
+    <style name="DetailActivityTheme" parent="Theme.DicodingMADEMovieCatalogue">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="MainActivityTheme" parent="Theme.DicodingMADEMovieCatalogue">
+        <item name="android:statusBarColor">@color/dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <!--set layout splashscreen-->
+    <style name="SplashTheme" parent="Theme.DicodingMADEMovieCatalogue">
+        <!--icon in splashscreen-->
+        <item name="android:windowBackground">@drawable/bg_splash_screen_night</item>
+        <!-- Status bar color-->
+        <item name="android:statusBarColor">@color/dark</item>
+        <!--Set text color in status bar to light-->
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 </resources>

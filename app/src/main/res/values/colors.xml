@@ -8,4 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="launcher_background">#0E7FBC</color>
+    <color name="is_favorite">#EB5062</color>
+    <color name="is_not_favorite">#000000</color>
+    <color name="dark">#121212</color>
+    <color name="gray">#686868</color>\
 </resources>

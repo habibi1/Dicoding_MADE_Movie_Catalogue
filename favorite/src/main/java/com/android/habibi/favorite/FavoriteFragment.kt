@@ -1,13 +1,12 @@
 package com.android.habibi.favorite
 
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.AdapterView
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -20,6 +19,7 @@ import com.android.habibi.favorite.databinding.FavoriteFragmentBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
+import org.koin.core.context.unloadKoinModules
 
 class FavoriteFragment : Fragment() {
 
@@ -33,14 +33,10 @@ class FavoriteFragment : Fragment() {
     private var listMovie: List<Movie>? = null
     private var typeList: Int? = null
 
-    override fun onStart() {
-        super.onStart()
-        loadKoinModules(
-            listOf(
-                settingPreferencesModule,
-                favoriteModule
-            )
-        )
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        loadModules(true)
     }
 
     override fun onCreateView(
@@ -51,39 +47,26 @@ class FavoriteFragment : Fragment() {
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        startMenuItemListener()
         startObserver()
         startObserverTypeList()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        //set support action bar
-        (activity as AppCompatActivity?)!!.setSupportActionBar(binding.toolbar as Toolbar)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_setting, menu)
-        return super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId){
-            R.id.action_settings -> {
-                typeList?.let { showSettingDialog(it) }
-                true
-            }
-            else -> {
-                super.onOptionsItemSelected(item)
+    private fun startMenuItemListener(){
+        binding.toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId){
+                R.id.action_settings -> {
+                    typeList?.let { showSettingDialog(it) }
+                    true
+                }
+                else -> {
+                    false
+                }
             }
         }
-    }
-
-    private fun supportMenuItem(isSupport: Boolean){
-        //set support options menu
-        setHasOptionsMenu(isSupport)
     }
 
     private fun startObserverTypeList(){
@@ -97,21 +80,37 @@ class FavoriteFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.rvListMovie.adapter = null
         _binding = null
     }
 
+    override fun onDetach() {
+        super.onDetach()
+
+        loadModules(false)
+    }
+
+    private fun loadModules(isLoad: Boolean){
+        val listModules = listOf(
+            settingPreferencesModule,
+            favoriteModule
+        )
+
+        if (isLoad)
+            loadKoinModules(listModules)
+        else
+            unloadKoinModules(listModules)
+    }
+
     private fun startObserver(){
-        supportMenuItem(false)
         onLoading()
         viewModel.listFavoriteMovie.observe(viewLifecycleOwner, {
             if (it is DataResource.Success) {
                 listMovie = it.data
                 setAdapter()
                 onSuccess()
-                supportMenuItem(true)
             } else {
                 onEmpty()
-                supportMenuItem(false)
             }
         })
     }

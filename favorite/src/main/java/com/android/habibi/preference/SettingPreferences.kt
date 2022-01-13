@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.map
 
 class SettingPreferences(private val context: Context) {
 
-    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
     private val listKey = intPreferencesKey("type_list_setting")
 
     fun getTypeListSetting(): Flow<Int> {
@@ -24,5 +23,9 @@ class SettingPreferences(private val context: Context) {
         context.dataStore.edit { preferences ->
             preferences[listKey] = typeList
         }
+    }
+
+    companion object {
+        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
     }
 }

@@ -3,54 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/drawable/bg_gradient_transparent.xml" value="0.54" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/drawable/bg_splash_screen_light.xml" value="0.3307291666666667" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/drawable/bg_splash_screen_night.xml" value="0.3307291666666667" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/drawable/ic_arrow_back.xml" value="0.54" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/drawable/ic_double_arrow_up.xml" value="0.3416666666666667" />
+        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/drawable/ic_arrow_back.xml" value="0.3302083333333333" />
         <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/drawable/ic_favorite.xml" value="0.20555555555555555" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/drawable/ic_favorite_checked.xml" value="0.54" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.54" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/drawable/ic_movie.xml" value="0.5484375" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/drawable/ic_round_favorite_24.xml" value="0.3307291666666667" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/drawable/ic_star.xml" value="0.54" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/drawable/ic_time.xml" value="0.54" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/drawable/ic_view_list.xml" value="0.54" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/drawable/ic_warning.xml" value="0.5484375" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.4095238095238095" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/layout-w936dp/content_scrolling.xml" value="0.23515625" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/layout/activity_detail_movie.xml" value="0.5" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/layout/activity_main.xml" value="0.5" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/layout/content_scrolling.xml" value="0.31354166666666666" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/layout/fragment_favorite.xml" value="0.3125" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/layout/fragment_movie.xml" value="0.33030852994555354" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/layout/item_chip.xml" value="0.3145833333333333" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/layout/item_list_movie.xml" value="0.5317708333333333" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/layout/item_movie_view_pager.xml" value="0.2546875" />
+        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/layout/fragment_movie.xml" value="0.5317708333333333" />
         <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/menu/bottom_nav_menu.xml" value="0.5317708333333333" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/menu/menu_detail.xml" value="0.3145833333333333" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/menu/menu_favorite.xml" value="0.5322916666666667" />
         <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.20555555555555555" />
         <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.20555555555555555" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/core/src/main/res/drawable/bg_background_navigation.xml" value="0.54" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/core/src/main/res/drawable/ic_image.xml" value="0.3307291666666667" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/core/src/main/res/drawable/ic_sentiment_neutral.xml" value="0.5484375" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/core/src/main/res/drawable/ic_very_dissatisfied.xml" value="0.54" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/core/src/main/res/layout/data_empty.xml" value="0.5322916666666667" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/core/src/main/res/layout/item_list_movie.xml" value="0.2" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/core/src/main/res/layout/item_movie_linear_vertical.xml" value="0.5322916666666667" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/core/src/main/res/layout/item_movie_staggered.xml" value="0.5322916666666667" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/core/src/main/res/layout/item_movie_view_pager.xml" value="0.25" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/core/src/main/res/layout/layout_data_empty.xml" value="0.25" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/core/src/main/res/layout/layout_loading.xml" value="0.5322916666666667" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/core/src/main/res/layout/layout_network_error.xml" value="0.5" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/favorite/src/main/res/drawable/ic_sentiment_neutral.xml" value="0.3307291666666667" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/favorite/src/main/res/drawable/ic_view_list.xml" value="0.54" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/favorite/src/main/res/layout/favorite_fragment.xml" value="0.33" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/favorite/src/main/res/layout/item_movie_straggered.xml" value="0.5322916666666667" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/favorite/src/main/res/layout/item_movie_vertical.xml" value="0.5322916666666667" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/favorite/src/main/res/layout/layout_setting.xml" value="0.5322916666666667" />
-        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/favorite/src/main/res/menu/menu_setting.xml" value="0.3145833333333333" />
+        <entry key="..\:/Users/Habibi/AndroidStudioProjects/DicodingMADEMovieCatalogue/core/src/main/res/drawable/ic_image.xml" value="0.3302083333333333" />
       </map>
     </option>
   </component>

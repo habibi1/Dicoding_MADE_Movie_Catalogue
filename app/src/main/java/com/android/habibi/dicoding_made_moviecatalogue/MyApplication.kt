@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.android.habibi.dicoding_made_moviecatalogue
 
 import android.app.Application

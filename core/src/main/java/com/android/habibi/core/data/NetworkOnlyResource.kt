@@ -3,7 +3,7 @@ package com.android.habibi.core.data
 import com.android.habibi.core.data.source.remote.network.ApiResponse
 import kotlinx.coroutines.flow.*
 
-abstract class NetworkBoundResource<ResultType, RequestType> {
+abstract class NetworkOnlyResource<ResultType, RequestType> {
 
     private var result: Flow<Resource<ResultType>> = flow {
         emit(Resource.Loading())

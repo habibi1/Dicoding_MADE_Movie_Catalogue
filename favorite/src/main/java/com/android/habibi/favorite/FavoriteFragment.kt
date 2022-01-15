@@ -17,9 +17,9 @@ import com.android.habibi.di.favoriteModule
 import com.android.habibi.di.settingPreferencesModule
 import com.android.habibi.favorite.databinding.FavoriteFragmentBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavoriteFragment : Fragment() {
 

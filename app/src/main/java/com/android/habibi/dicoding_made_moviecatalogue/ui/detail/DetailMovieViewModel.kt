@@ -34,7 +34,7 @@ class DetailMovieViewModel constructor(
                     }
                 }
                 is Resource.Error -> {
-                    DataResource.Error(it.message!!)
+                    DataResource.Error(it.message.toString())
                 }
             }
         }

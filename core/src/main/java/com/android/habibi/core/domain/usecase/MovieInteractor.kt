@@ -5,7 +5,6 @@ import com.android.habibi.core.data.source.local.entity.MovieEntity
 import com.android.habibi.core.domain.model.Movie
 import com.android.habibi.core.domain.model.MovieDetail as MovieDetailDomain
 import com.android.habibi.core.domain.repository.IMovieRepository
-//import com.android.habibi.core.ui.model.MovieDetail as MovieDetailPresentation
 import kotlinx.coroutines.flow.Flow
 
 class MovieInteractor constructor(

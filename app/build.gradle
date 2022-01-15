@@ -11,7 +11,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "id.go.jakarta.dicoding_made_moviecatalogue"
+        applicationId "com.android.habibi.dicoding_made_moviecatalogue"
         minSdk 23
         targetSdk 31
         versionCode 1
@@ -23,6 +23,10 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

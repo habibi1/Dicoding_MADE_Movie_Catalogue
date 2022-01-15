@@ -23,16 +23,15 @@ class MovieCatalogueRepository constructor(
 ): IMovieRepository {
 
     override fun getAllMovie(): Flow<Resource<List<Movie>>> =
-        object : NetworkBoundResource<List<Movie>, List<ResultsItem>>() {
+        object : NetworkOnlyResource<List<Movie>, List<ResultsItem>>() {
             override fun loadFromNetwork(data: List<ResultsItem>): Flow<List<Movie>> =
                 mapListMovieResponseToDomain(data)
             override suspend fun createCall(): Flow<ApiResponse<List<ResultsItem>>> =
                 remoteDataSource.getMovieNowPlaying()
-
         }.asFlow()
 
     override fun getDetailMovie(movieId: String): Flow<Resource<MovieDetailDomain>> =
-        object : NetworkBoundResource<MovieDetailDomain, MovieDetailResponse>() {
+        object : NetworkOnlyResource<MovieDetailDomain, MovieDetailResponse>() {
             override fun loadFromNetwork(data: MovieDetailResponse): Flow<MovieDetailDomain> =
                 mapMovieDetailResponseToDomain(data)
             override suspend fun createCall(): Flow<ApiResponse<MovieDetailResponse>> =

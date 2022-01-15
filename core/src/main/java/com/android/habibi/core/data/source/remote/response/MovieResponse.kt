@@ -9,9 +9,6 @@ data class MovieResponse(
 
 data class ResultsItem(
 
-    @field:SerializedName("overview")
-    val overview: String,
-
     @field:SerializedName("title")
     val title: String,
 

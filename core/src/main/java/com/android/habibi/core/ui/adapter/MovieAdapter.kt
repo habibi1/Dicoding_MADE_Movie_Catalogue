@@ -131,7 +131,7 @@ class MovieAdapter(
         private var currentItem: Movie? = null
 
         init {
-            binding.root.setOnClickListener {
+            binding.viewRoot.setOnClickListener {
                 currentItem?.let {
                     onClick(it)
                 }

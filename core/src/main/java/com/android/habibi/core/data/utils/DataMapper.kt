@@ -66,11 +66,7 @@ object DataMapper {
         MovieEntity(
             input.id,
             input.title,
-            input.overview,
-            input.adult,
-            input.voteCount,
             input.voteAverage,
-            input.backdropPath,
             input.posterPath
         )
 }

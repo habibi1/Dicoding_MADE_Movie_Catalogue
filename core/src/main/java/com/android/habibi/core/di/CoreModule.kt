@@ -8,6 +8,9 @@ import com.android.habibi.core.data.source.local.room.MovieCatalogueDatabase
 import com.android.habibi.core.data.source.remote.RemoteDataSource
 import com.android.habibi.core.data.source.remote.network.ApiService
 import com.android.habibi.core.domain.repository.IMovieRepository
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -19,21 +22,30 @@ import java.util.concurrent.TimeUnit
 val databaseModule = module {
     factory { get<MovieCatalogueDatabase>().movieCatalogueDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("movie_catalogue".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             MovieCatalogueDatabase::class.java, "MovieCatalogue.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
 val networkModule = module {
     single {
+        val hostname = BuildConfig.HOSTNAME
+        val certificatePinner = CertificatePinner.Builder()
+            .add(hostname, BuildConfig.CERTIVICATE_PINNER)
+            .build()
         OkHttpClient.Builder()
             .addInterceptor(
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             )
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
+            .certificatePinner(certificatePinner)
             .build()
     }
     single {
